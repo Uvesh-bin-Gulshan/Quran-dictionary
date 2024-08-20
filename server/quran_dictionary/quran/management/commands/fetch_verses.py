@@ -19,8 +19,13 @@ class Command(BaseCommand):
 
                 chapter_number = int(verse_key.split(":")[0])
 
+                try:
+                    chapter = Chapter.objects.get(id=chapter_number)
+                except Chapter.DoesNotExist:
+                    self.stdout.write(self.style.ERROR(f"Chapter with id {chapter_number} does not exist."))
+                    continue
 
-                chapter=Chapter.objects.get(id=chapter_number)
+
 
                 juz=Juz.objects.filter(
                     first_verse_id__lte=verse_id,
