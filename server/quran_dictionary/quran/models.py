@@ -24,7 +24,7 @@ class Juz(models.Model):
     verse_mapping = models.JSONField()
 
     def __str__(self):
-        return f"Juz {self.juz_number}"
+     return f"Juz {self.juz_number} {self.id} (ID: {self.id})"
 
 class QuranWord(models.Model):
     verse_id = models.IntegerField()
